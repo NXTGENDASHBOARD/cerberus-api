@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cerberus.Dashboard.Domain",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cerberus.Dashboard.Application", "Cerberus.Dashboard.Application\Cerberus.Dashboard.Application.csproj", "{8A3BF3AB-DD71-4F2A-8AEF-A3E2CB26E548}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cerberus.Dashboard.Persistence", "Cerberus.Dashboard.Persistence\Cerberus.Dashboard.Persistence.csproj", "{84FC03DF-C666-4095-B975-94AB79261FAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,13 +35,19 @@ Global
 		{8A3BF3AB-DD71-4F2A-8AEF-A3E2CB26E548}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A3BF3AB-DD71-4F2A-8AEF-A3E2CB26E548}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A3BF3AB-DD71-4F2A-8AEF-A3E2CB26E548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84FC03DF-C666-4095-B975-94AB79261FAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84FC03DF-C666-4095-B975-94AB79261FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84FC03DF-C666-4095-B975-94AB79261FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84FC03DF-C666-4095-B975-94AB79261FAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{D82C7ED6-B343-4FF8-A747-AC93434511F0} = {F1D85A22-498D-46FA-9EEF-9265E8007DF5}
 		{F687CCAB-DB7C-4337-B2E4-21C9D80479F6} = {0C0E3604-EA1C-41D9-9F7E-ECB07BD7A2EB}
 		{8A3BF3AB-DD71-4F2A-8AEF-A3E2CB26E548} = {0C0E3604-EA1C-41D9-9F7E-ECB07BD7A2EB}
+		{84FC03DF-C666-4095-B975-94AB79261FAE} = {117D3F9B-D01D-4C65-9E03-6687ABFDE6BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0315141A-3647-428E-AE42-C037A02B7BB5}

@@ -1,11 +1,16 @@
-﻿using Cerberus.Dashboard.Api.Features.ApplicationFeatures.Commands;
-using Cerberus.Dashboard.Api.Features.ApplicationFeatures.Queries;
+﻿using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Commands.DeleteApplication;
+using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Commands.CreateApplication;
+using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetAllApplications;
+using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicationById;
+
+
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
+using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Commands.UpdateApplication;
 
 namespace Cerberus.Dashboard.Api.Controllers
 {

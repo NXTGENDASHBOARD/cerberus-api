@@ -11,7 +11,12 @@ using System.Security.Cryptography;
 using BC = BCrypt.Net.BCrypt;
 namespace Cerberus.Dashboard.Application.Services.Security
 {
-    public class TokenService
+    public interface ITokenService
+    {
+        string BuildToken(string name, string[] roles, DateTime expireDate);
+    }
+
+    public class TokenService : ITokenService
     {
         public string BuildToken(string name, string[] roles, DateTime expireDate)
         {
@@ -31,6 +36,6 @@ namespace Cerberus.Dashboard.Application.Services.Security
 
             return handler.WriteToken(securityToken);
         }
-  
+
     }
 }

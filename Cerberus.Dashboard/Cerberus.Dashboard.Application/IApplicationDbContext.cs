@@ -11,6 +11,8 @@ namespace Cerberus.Dashboard.Application
     public interface IApplicationDbContext
     {
         DbSet<Account> Accounts { get; set; }
+        DbSet<Domain.Models.Application> Applications { get; set; }
+        DbSet<Institution> Institutions { get; set; }
 
         Task<int> SaveChangesAsync();
     }

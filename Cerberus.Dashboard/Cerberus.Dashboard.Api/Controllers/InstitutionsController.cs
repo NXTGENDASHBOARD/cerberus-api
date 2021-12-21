@@ -1,5 +1,9 @@
-﻿using Cerberus.Dashboard.Api.Features.InstitutionFeatures.Commands;
-using Cerberus.Dashboard.Api.Features.InstitutionFeatures.Queries;
+﻿
+using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Command.CreateInstitution;
+using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Command.DeleteInstitution;
+using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Command.UpdateInstitution;
+using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Queries.GetAllInstitutions;
+using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Queries.GetInstitutionById;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

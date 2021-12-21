@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace Cerberus.Dashboard.Domain.Models
 {
-    public class Account
+    public class Account : Entity
     {
-        [Key]
-        public int Id { get; set; }
 
         // Properties
-
         [Required]
         public string StaffNumber { get; set; }
 
@@ -32,8 +29,7 @@ namespace Cerberus.Dashboard.Domain.Models
         public string Token { get; set; }
         public DateTime? ResetTokenExpires { get; set; }
         public DateTime? PasswordReset { get; set; }
-        public DateTime Created { get; set; }
-        public DateTime? Updated { get; set; }
+        
         public List<RefreshToken> RefreshTokens { get; set; }
         public int RegistrationTypeId { get; set; }
 
