@@ -20,8 +20,12 @@ namespace Cerberus.Dashboard.Application.Features.InstitutionFeatures.Queries.Ge
 
         public async Task<IEnumerable<Institution>> Handle(GetAllInstitutionsFromITSQuery request, CancellationToken cancellationToken)
         {
-            await _institutionService.getInstitutions();
-            return null;
+           
+            var institutionList = await _institutionService.getInstitutions();
+            
+            if(institutionList == null) return null;
+
+            return institutionList;
         }
     }
 }
