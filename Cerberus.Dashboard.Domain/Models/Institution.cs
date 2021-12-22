@@ -13,5 +13,6 @@ namespace Cerberus.Dashboard.Domain.Models
         public bool IsMainCampus { get; set; }
         public string Province { get; set; }
         public string PostCode { get; set; }
+        public Address Address { get; set; }
     }
 }
