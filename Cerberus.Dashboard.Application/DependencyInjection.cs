@@ -1,4 +1,5 @@
-﻿using Cerberus.Dashboard.Application.Services.Security;
+﻿using Cerberus.Dashboard.Application.Services.ITS;
+using Cerberus.Dashboard.Application.Services.Security;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,7 @@ namespace Cerberus.Dashboard.Application
             services.AddScoped<IEncryptionService, EncryptionService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<ISecurityContext, SecurityContext>();
+            services.AddScoped<IITS_InstitutionService, ITS_InstitutionService>();
             services.AddMediatR(Assembly.GetExecutingAssembly());
         }
     }
