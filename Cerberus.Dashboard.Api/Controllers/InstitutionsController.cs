@@ -3,6 +3,7 @@ using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Command.Create
 using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Command.DeleteInstitution;
 using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Command.UpdateInstitution;
 using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Queries.GetAllInstitutions;
+using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Queries.GetAllInstitutionsFromITS;
 using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Queries.GetInstitutionById;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -34,6 +35,12 @@ namespace Cerberus.Dashboard.Api.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             return Ok(await _mediator.Send(new GetAllInstitutionsQuery()));
+        } 
+        
+        [HttpGet("its")]
+        public async Task<IActionResult> GetITSAllAsync()
+        {
+            return Ok(await _mediator.Send(new GetAllInstitutionsFromITSQuery()));
         }
 
         /// <summary>

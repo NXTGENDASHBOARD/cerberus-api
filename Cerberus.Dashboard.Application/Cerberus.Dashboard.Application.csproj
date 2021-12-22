@@ -11,6 +11,15 @@
 	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.1" />	  
 	  <PackageReference Include="BCrypt.Net-Next" Version="4.0.0" />
 	  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.11" />
+	  <PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="3.0.0">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	  <PackageReference Include="NSwag.ApiDescription.Client" Version="13.0.5">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +28,12 @@
 
   <ItemGroup>
     <Folder Include="Features\AccountFeatures\Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <OpenApiReference Include="OpenAPIs\API_Structures.json" CodeGenerator="NSwagCSharp" Namespace="ITSApi" ClassName="StudentApi_Client">
+      <SourceUri>https://edu-integratordemo.adaptit.com/www/swagger/API_Structures.json</SourceUri>
+    </OpenApiReference>
   </ItemGroup>
 
 </Project>
