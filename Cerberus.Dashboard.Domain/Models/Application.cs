@@ -17,9 +17,5 @@ namespace Cerberus.Dashboard.Domain.Models
         public string ApplicationDate { get; set; }
         public bool IsDisable { get; set; }
 
-        public DateTime CreatedDate { get; set; }
-        public string CreateUserId { get; set; }
-        public DateTime ModifyDate { get; set; }
-        public string ModifyUserId { get; set; }
     }
 }
