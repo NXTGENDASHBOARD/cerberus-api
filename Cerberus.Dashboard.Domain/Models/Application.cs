@@ -17,16 +17,7 @@ namespace Cerberus.Dashboard.Domain.Models
         public string ApplicationDate { get; set; }
         public bool IsDisable { get; set; }
         public string ApplicationStage { get; set; }
-        public string PhysicalAddressLine1 { get; set; }
-        public string PhysicalAddressLine2 { get; set; }
-        public string PhysicalAddressLine3 { get; set; }
-        public string PhysicalAddressCity { get; set; }
-        public string PhysicalAddressPostalCode { get; set; }
-        public string PostalAddressLine1 { get; set; }
-        public string PostalAddressLine2 { get; set; }
-        public string PostalAddressLine3 { get; set; }
-        public string PostalAddressCity { get; set; }
-        public string PostalAddressPostalCode { get; set; }
+        public Address Address { get; set; }
         public List<Courses> Courses { get; set; }
 
 
