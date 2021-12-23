@@ -37,5 +37,11 @@ namespace Cerberus.Dashboard.Application.Services.Security
             return handler.WriteToken(securityToken);
         }
 
+        public string BuildItsToken(string staffNumber, string pin, string key)
+        {
+
+            return null;
+        }
+
     }
 }

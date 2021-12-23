@@ -16,12 +16,18 @@ namespace Cerberus.Dashboard.Application
     {
         public static void AddApplication(this IServiceCollection services)
         {
+            services.AddServices();
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+        }
+
+        public static void AddServices(this IServiceCollection services)
+        {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IEncryptionService, EncryptionService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<ISecurityContext, SecurityContext>();
             services.AddScoped<IITS_InstitutionService, ITS_InstitutionService>();
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddScoped<IITS_SecurityService, ITS_SecurityService>();
         }
     }
 }

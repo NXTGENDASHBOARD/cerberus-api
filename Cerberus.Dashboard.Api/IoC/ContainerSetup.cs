@@ -30,10 +30,10 @@ namespace Cerberus.Dashboard.Api.IoC
                     options
                         .AddPolicy("CorsPolicy",
                         builder =>
-                            builder
-                                .AllowAnyOrigin()
+                           builder.WithOrigins("http://localhost:4200")                          
                                 .AllowAnyHeader()
-                                .AllowAnyMethod());
+                                .AllowAnyMethod()
+                                .AllowCredentials());
                 });
         }
     }
