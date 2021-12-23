@@ -1,4 +1,5 @@
 ﻿using Cerberus.Dashboard.Api.DTOs;
+using Cerberus.Dashboard.Application.Features.AccountFeatures.Commands.VerifyITSUserAccess;
 using Cerberus.Dashboard.Application.Features.AccountFeatures.Queries.GetAccountById;
 using Cerberus.Dashboard.Application.Features.AccountFeatures.Queries.VerifyAccount;
 using MediatR;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Cerberus.Dashboard.Api.Controllers
 {
-    [Route("api/accounts")]
+    [Route("api/account")]
     [ApiController]
     public class AccountsController : ControllerBase
     {
@@ -35,6 +36,17 @@ namespace Cerberus.Dashboard.Api.Controllers
             if(accountId == default) return BadRequest(ModelState);
             var account = await _mediator.Send(new GetAccountByIdQuery { AccountId = accountId });
 
+            return Ok(account);
+        }
+
+        [HttpPost("itslogin")]
+        public async Task<IActionResult> ItsLoginAsync([FromBody] LoginDTO model)
+        {
+            var account = await _mediator.Send(new VerifyITSUserAccessCommand
+            {
+                StaffNumber = model.StaffNumber,
+                Pin = model.Pin
+            });
             return Ok(account);
         }
     }
