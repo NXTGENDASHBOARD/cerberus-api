@@ -18,6 +18,8 @@ namespace Cerberus.Dashboard.Persistence.Context
         public DbSet<Domain.Models.Application> Applications { get; set; }
         public DbSet<Institution> Institutions { get; set; }
 
+        public DbSet<Address> Addresss { get; set; }
+
         public async Task<int> SaveChangesAsync() { return await base.SaveChangesAsync(); }
     }
 }

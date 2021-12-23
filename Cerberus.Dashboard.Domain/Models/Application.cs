@@ -16,6 +16,10 @@ namespace Cerberus.Dashboard.Domain.Models
         public string Ethnicity { get; set; }
         public string ApplicationDate { get; set; }
         public bool IsDisable { get; set; }
+        public string ApplicationStage { get; set; }
+        public Address Address { get; set; }
+        public List<Courses> Courses { get; set; }
+
 
     }
 }
