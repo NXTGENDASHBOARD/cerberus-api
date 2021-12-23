@@ -19,9 +19,6 @@
 		
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Models\" />
-	</ItemGroup>
-	<ItemGroup>
 	  <ProjectReference Include="..\Cerberus.Dashboard.Application\Cerberus.Dashboard.Application.csproj" />
 	  <ProjectReference Include="..\Cerberus.Dashboard.Persistence\Cerberus.Dashboard.Persistence.csproj" />
 	</ItemGroup>
