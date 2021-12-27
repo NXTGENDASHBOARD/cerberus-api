@@ -364,3 +364,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 *.cache
+/Cerberus.Dashboard.Api/.config/dotnet-tools.json

@@ -20,6 +20,8 @@ namespace Cerberus.Dashboard.Domain.Models
         public Address Address { get; set; }
         public List<Courses> Courses { get; set; }
 
+        public Institution Institution { get; set; }
+
 
     }
 }

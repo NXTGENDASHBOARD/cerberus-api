@@ -10,10 +10,7 @@ namespace Cerberus.Dashboard.Domain.Models
 {
     public  class Address : Entity
     {
-        [ForeignKey("Application")]
-        public int ApplicationId { get; set; }
-        [ForeignKey("Institution")]
-        public int InstitutionId { get; set; }
+        
         public string PhysicalAddressLine1 { get; set; }
         public string PhysicalAddressLine2 { get; set; }
         public string PhysicalAddressLine3 { get; set; }

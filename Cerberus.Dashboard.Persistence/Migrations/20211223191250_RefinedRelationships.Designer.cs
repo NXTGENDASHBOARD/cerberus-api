@@ -3,15 +3,17 @@ using System;
 using Cerberus.Dashboard.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Cerberus.Dashboard.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211223191250_RefinedRelationships")]
+    partial class RefinedRelationships
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -177,9 +179,6 @@ namespace Cerberus.Dashboard.Persistence.Migrations
                     b.Property<string>("Gender")
                         .HasColumnType("text");
 
-                    b.Property<int?>("InstitutionId")
-                        .HasColumnType("integer");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
@@ -201,8 +200,6 @@ namespace Cerberus.Dashboard.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
-
-                    b.HasIndex("InstitutionId");
 
                     b.ToTable("Applications");
                 });
@@ -352,13 +349,7 @@ namespace Cerberus.Dashboard.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("AddressId");
 
-                    b.HasOne("Cerberus.Dashboard.Domain.Models.Institution", "Institution")
-                        .WithMany()
-                        .HasForeignKey("InstitutionId");
-
                     b.Navigation("Address");
-
-                    b.Navigation("Institution");
                 });
 
             modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.Courses", b =>

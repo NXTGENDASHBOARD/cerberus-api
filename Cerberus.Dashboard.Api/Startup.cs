@@ -22,8 +22,9 @@ namespace Cerberus.Dashboard.Api
                 options.AddPolicy(name: "_myAllowSpecificOrigins",
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:4200").AllowAnyHeader()
-                                                  .AllowAnyMethod();
+                                   //   builder.WithOrigins("http://localhost:4200").AllowAnyHeader()
+                                   //               .AllowAnyMethod();
+                                   builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
                                   });
             });
 
@@ -41,14 +42,14 @@ namespace Cerberus.Dashboard.Api
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment() || env.IsProduction())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NxtGen Account API v1"));
             }
 
-            app.UseHttpsRedirection();
+           // app.UseHttpsRedirection();
 
             app.UseRouting();
 
