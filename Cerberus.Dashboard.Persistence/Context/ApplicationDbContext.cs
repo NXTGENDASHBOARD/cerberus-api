@@ -19,6 +19,11 @@ namespace Cerberus.Dashboard.Persistence.Context
         public DbSet<Institution> Institutions { get; set; }
 
         public DbSet<Address> Addresss { get; set; }
+        public DbSet<Courses> Courses { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<Faculty> Faculty { get; set;}
+        public DbSet<School> School { get; set; }
+
 
         public async Task<int> SaveChangesAsync() { return await base.SaveChangesAsync(); }
     }

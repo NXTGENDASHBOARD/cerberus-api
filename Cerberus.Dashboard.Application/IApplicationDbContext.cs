@@ -13,6 +13,11 @@ namespace Cerberus.Dashboard.Application
         DbSet<Account> Accounts { get; set; }
         DbSet<Domain.Models.Application> Applications { get; set; }
         DbSet<Institution> Institutions { get; set; }
+        public DbSet<Address> Addresss { get; set; }
+        public DbSet<Courses> Courses { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<Faculty> Faculty { get; set; }
+        public DbSet<School> School { get; set; }
 
         Task<int> SaveChangesAsync();
     }
