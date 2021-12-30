@@ -21,7 +21,9 @@ namespace Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.Ge
         {
             var applicationList = await _context.Applications.ToListAsync();
 
-            if (applicationList == null) return null;
+            if (applicationList == null)
+            return null; 
+            
 
             return applicationList.AsReadOnly();
         }

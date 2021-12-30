@@ -150,7 +150,7 @@ namespace Cerberus.Dashboard.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int?>("AddressId")
+                    b.Property<int>("AddressId")
                         .HasColumnType("integer");
 
                     b.Property<string>("ApplicationDate")
@@ -177,7 +177,7 @@ namespace Cerberus.Dashboard.Persistence.Migrations
                     b.Property<string>("Gender")
                         .HasColumnType("text");
 
-                    b.Property<int?>("InstitutionId")
+                    b.Property<int>("InstitutionId")
                         .HasColumnType("integer");
 
                     b.Property<bool>("IsActive")
@@ -223,6 +223,9 @@ namespace Cerberus.Dashboard.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<int?>("DepartmentId")
+                        .HasColumnType("integer");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
@@ -245,7 +248,85 @@ namespace Cerberus.Dashboard.Persistence.Migrations
 
                     b.HasIndex("ApplicationId");
 
+                    b.HasIndex("DepartmentId");
+
                     b.ToTable("Courses");
+                });
+
+            modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.Department", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("CreateUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("ModifyDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("ModifyUserId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<int>("SchoolId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SchoolId");
+
+                    b.ToTable("Department");
+                });
+
+            modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.Faculty", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("CreateUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("InstitutionId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("ModifyDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("ModifyUserId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstitutionId");
+
+                    b.ToTable("Faculty");
                 });
 
             modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.Institution", b =>
@@ -255,7 +336,7 @@ namespace Cerberus.Dashboard.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int?>("AddressId")
+                    b.Property<int>("AddressId")
                         .HasColumnType("integer");
 
                     b.Property<string>("CreateUserId")
@@ -296,6 +377,44 @@ namespace Cerberus.Dashboard.Persistence.Migrations
                     b.HasIndex("AddressId");
 
                     b.ToTable("Institutions");
+                });
+
+            modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.School", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("CreateUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("ModifyDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("ModifyUserId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FacultyId");
+
+                    b.ToTable("School");
                 });
 
             modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.Account", b =>
@@ -350,11 +469,15 @@ namespace Cerberus.Dashboard.Persistence.Migrations
                 {
                     b.HasOne("Cerberus.Dashboard.Domain.Models.Address", "Address")
                         .WithMany()
-                        .HasForeignKey("AddressId");
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Cerberus.Dashboard.Domain.Models.Institution", "Institution")
                         .WithMany()
-                        .HasForeignKey("InstitutionId");
+                        .HasForeignKey("InstitutionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Address");
 
@@ -368,20 +491,73 @@ namespace Cerberus.Dashboard.Persistence.Migrations
                         .HasForeignKey("ApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Cerberus.Dashboard.Domain.Models.Department", null)
+                        .WithMany("Courses")
+                        .HasForeignKey("DepartmentId");
+                });
+
+            modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.Department", b =>
+                {
+                    b.HasOne("Cerberus.Dashboard.Domain.Models.School", null)
+                        .WithMany("Departments")
+                        .HasForeignKey("SchoolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.Faculty", b =>
+                {
+                    b.HasOne("Cerberus.Dashboard.Domain.Models.Institution", null)
+                        .WithMany("Faculties")
+                        .HasForeignKey("InstitutionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.Institution", b =>
                 {
                     b.HasOne("Cerberus.Dashboard.Domain.Models.Address", "Address")
                         .WithMany()
-                        .HasForeignKey("AddressId");
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Address");
+                });
+
+            modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.School", b =>
+                {
+                    b.HasOne("Cerberus.Dashboard.Domain.Models.Faculty", null)
+                        .WithMany("Schools")
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.Application", b =>
                 {
                     b.Navigation("Courses");
+                });
+
+            modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.Department", b =>
+                {
+                    b.Navigation("Courses");
+                });
+
+            modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.Faculty", b =>
+                {
+                    b.Navigation("Schools");
+                });
+
+            modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.Institution", b =>
+                {
+                    b.Navigation("Faculties");
+                });
+
+            modelBuilder.Entity("Cerberus.Dashboard.Domain.Models.School", b =>
+                {
+                    b.Navigation("Departments");
                 });
 #pragma warning restore 612, 618
         }

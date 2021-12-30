@@ -2,6 +2,7 @@
 using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Commands.CreateApplication;
 using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetAllApplications;
 using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicationById;
+using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicationsByInstitutionId;
 
 
 using MediatR;
@@ -91,6 +92,16 @@ namespace Cerberus.Dashboard.Api.Controllers
             }
 
             return Ok(await _mediator.Send(command));
+        }
+        /// <summary>
+        /// Returns Applications for a given Institution
+        /// </summary> 
+        /// <param name="id"></param>
+        /// <returns model="Application">Application</returns> 
+        [HttpGet("GetByInstitutionId/{InstitutionId}")]
+        public async Task<IActionResult> GetByInstitutionIdAsync(int InstitutionId)
+        {
+            return Ok(await _mediator.Send(new GetApplicationsByInstitutionIdQuery { InstitutionId = InstitutionId }));
         }
     }
 }

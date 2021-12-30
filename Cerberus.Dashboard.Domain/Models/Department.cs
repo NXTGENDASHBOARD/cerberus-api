@@ -8,13 +8,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cerberus.Dashboard.Domain.Models
 {
-    public  class Courses : Entity
+    public class Department : Entity
     {
-        
-        [ForeignKey("Application")]
-        public int ApplicationId { get; set; }
-        public string Preference { get; set; }
+        [ForeignKey("School")]
+        public int SchoolId { get; set; }
         public string Name { get; set; }
-
+        public  List<Courses> Courses { get; set; }
     }
 }
