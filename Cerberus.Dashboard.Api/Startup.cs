@@ -16,17 +16,7 @@ namespace Cerberus.Dashboard.Api
         }
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddCors(options =>
-            {
-                options.AddPolicy(name: "_myAllowSpecificOrigins",
-                                  builder =>
-                                  {
-                                   //   builder.WithOrigins("http://localhost:4200").AllowAnyHeader()
-                                   //               .AllowAnyMethod();
-                                   builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-                                  });
-            });
+        {           
 
             services.AddControllers().AddNewtonsoftJson();
             ContainerSetup.Setup(services, Configuration);
@@ -36,7 +26,7 @@ namespace Cerberus.Dashboard.Api
             //ContainerSetup.Setup(services, Configuration);
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cerberus Dashboard API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ITS 5.0 Student Selection API", Version = "v1" });
             });
 
         }
@@ -46,7 +36,7 @@ namespace Cerberus.Dashboard.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NxtGen Account API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ITS 5.0 Student Selection API v1"));
             }
 
            // app.UseHttpsRedirection();

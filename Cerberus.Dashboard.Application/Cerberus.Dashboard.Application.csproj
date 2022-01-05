@@ -33,4 +33,8 @@
     </OpenApiReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\Book\" />
+  </ItemGroup>
+
 </Project>

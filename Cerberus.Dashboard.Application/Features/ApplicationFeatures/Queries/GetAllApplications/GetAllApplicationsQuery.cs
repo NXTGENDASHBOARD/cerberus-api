@@ -9,5 +9,8 @@ namespace Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.Ge
 {
     public class GetAllApplicationsQuery: IRequest<IEnumerable<Domain.Models.Application>>
     {
+        public  bool isPaginated { get; set; }
+        public int page { get; set; }
+        public int limit { get; set; }
     }
 }
