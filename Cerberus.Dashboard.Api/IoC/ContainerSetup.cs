@@ -24,17 +24,16 @@ namespace Cerberus.Dashboard.Api.IoC
 
         private static void AddCors(this IServiceCollection services)
         {
-            services
-                .AddCors(options =>
-                {
-                    options
-                        .AddPolicy("CorsPolicy",
-                        builder =>
-                           builder.WithOrigins("http://localhost:4200")                          
-                                .AllowAnyHeader()
-                                .AllowAnyMethod()
-                                .AllowCredentials());
-                });
+       
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "CorsPolicy",
+                                  builder =>
+                                  {
+
+                                      builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+                                  });
+            });
         }
     }
 }
