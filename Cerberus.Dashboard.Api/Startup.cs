@@ -19,6 +19,15 @@ namespace Cerberus.Dashboard.Api
         {           
 
             services.AddControllers().AddNewtonsoftJson();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "_myAllowSpecificOrigins",
+                                  builder =>
+                                  {
+                                   
+                                      builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                                  });
+            });
             ContainerSetup.Setup(services, Configuration);
 
             // configure strongly typed settings object
@@ -39,7 +48,7 @@ namespace Cerberus.Dashboard.Api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ITS 5.0 Student Selection API v1"));
             }
 
-           // app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
