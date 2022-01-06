@@ -19,15 +19,7 @@ namespace Cerberus.Dashboard.Api
         {           
 
             services.AddControllers().AddNewtonsoftJson();
-            services.AddCors(options =>
-            {
-                options.AddPolicy(name: "_myAllowSpecificOrigins",
-                                  builder =>
-                                  {
-                                   
-                                      builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-                                  });
-            });
+           
             ContainerSetup.Setup(services, Configuration);
 
             // configure strongly typed settings object
