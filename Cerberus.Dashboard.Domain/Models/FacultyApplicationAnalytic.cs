@@ -8,5 +8,6 @@ namespace Cerberus.Dashboard.Domain.Models
 {
     public class FacultyApplicationAnalytic : BaseAnalyticModel
     {
+        public string FacultyName { get; set; }
     }
 }

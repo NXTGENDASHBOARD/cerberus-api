@@ -3,15 +3,17 @@ using System;
 using Cerberus.Dashboard.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Cerberus.Dashboard.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220110075418_GraphModels")]
+    partial class GraphModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -352,9 +354,6 @@ namespace Cerberus.Dashboard.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("APS")
-                        .HasColumnType("integer");
-
                     b.Property<string>("AnalyticType")
                         .HasColumnType("text");
 
@@ -426,9 +425,6 @@ namespace Cerberus.Dashboard.Persistence.Migrations
                     b.Property<DateTime>("DateRecord")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("FacultyName")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("LastDateRecord")
                         .HasColumnType("timestamp without time zone");
 
@@ -456,17 +452,11 @@ namespace Cerberus.Dashboard.Persistence.Migrations
                     b.Property<DateTime>("DateRecord")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("FeederSchoolName")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("LastDateRecord")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("LastSum")
                         .HasColumnType("integer");
-
-                    b.Property<string>("Quintile")
-                        .HasColumnType("text");
 
                     b.Property<int>("Sum")
                         .HasColumnType("integer");

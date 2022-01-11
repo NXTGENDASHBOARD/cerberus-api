@@ -8,5 +8,7 @@ namespace Cerberus.Dashboard.Domain.Models
 {
     public class FeederSchoolApplicationAnalytic : BaseAnalyticModel
     {
+        public string FeederSchoolName { get; set;}
+        public string Quintile { get; set;}
     }
 }

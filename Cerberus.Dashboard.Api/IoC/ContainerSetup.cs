@@ -31,7 +31,7 @@ namespace Cerberus.Dashboard.Api.IoC
                                   builder =>
                                   {
 
-                                      builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+                                      builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
                                   });
             });
         }

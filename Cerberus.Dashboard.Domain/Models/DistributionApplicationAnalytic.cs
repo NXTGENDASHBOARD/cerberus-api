@@ -8,5 +8,6 @@ namespace Cerberus.Dashboard.Domain.Models
 {
     public class DistributionApplicationAnalytic : BaseAnalyticModel
     {
+        public int APS { get; set; }
     }
 }

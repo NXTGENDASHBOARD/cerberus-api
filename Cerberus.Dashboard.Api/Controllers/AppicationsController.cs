@@ -3,6 +3,14 @@ using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Commands.Creat
 using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetAllApplications;
 using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicationById;
 using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicationsByInstitutionId;
+using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicantAPSDistribution;
+using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicantCourseTypeAll;
+using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicantFeederSchoolsAll;
+using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicantGenderAll;
+using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicantLocationAll;
+using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicantRaceAll;
+using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicationPipeline;
+using Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicationsCompleted;
 
 
 using MediatR;
@@ -102,6 +110,87 @@ namespace Cerberus.Dashboard.Api.Controllers
         public async Task<IActionResult> GetByInstitutionIdAsync(int InstitutionId)
         {
             return Ok(await _mediator.Send(new GetApplicationsByInstitutionIdQuery { InstitutionId = InstitutionId }));
+        }
+
+        /// <summary>
+        /// Returns Applications APS for a given Institution
+        /// </summary> 
+        /// 
+        /// <returns model="DistributionApplicationAnalytic">DistributionApplicationAnalytic</returns> 
+        [HttpGet("GetApplicantAPSDistribution")]
+        public async Task<IActionResult> GetAllAPSDistributionAsync()
+        {
+            return Ok(await _mediator.Send(new GetApplicantAPSDistributionQuery()));
+        }
+        /// <summary>
+        /// Returns Courses for all Applications
+        /// </summary> 
+        /// 
+        /// <returns model="CourseTypeApplicationAnalytic">CourseTypeApplicationAnalytic</returns> 
+        [HttpGet("GetApplicantCourseTypeAll")]
+        public async Task<IActionResult> GetApplicantCourseTypeAllAsync()
+        {
+            return Ok(await _mediator.Send(new GetApplicantCourseTypeAllQuery()));
+        }
+        /// <summary>
+        /// Returns Top Feeder Schools
+        /// </summary> 
+        /// 
+        /// <returns model="FeederSchoolApplicationAnalytic">FeederSchoolApplicationAnalytic</returns> 
+        [HttpGet("GetApplicantFeederSchoolsAll")]
+        public async Task<IActionResult> GetApplicantFeederSchoolsAllAsync()
+        {
+            return Ok(await _mediator.Send(new GetApplicantFeederSchoolsAllQuery()));
+        }
+        /// <summary>
+        /// Returns All Genders of Applicants
+        /// </summary> 
+        /// 
+        /// <returns model="GenderApplicationAnalytic">GenderApplicationAnalytic</returns> 
+        [HttpGet("GetApplicantGenderAll")]
+        public async Task<IActionResult> GetApplicantGenderAllAsync()
+        {
+            return Ok(await _mediator.Send(new GetApplicantGenderAllQuery()));
+        }
+        /// <summary>
+        /// Returns Locations of the applicants
+        /// </summary> 
+        /// 
+        /// <returns model="LocationApplicationAnalytic">LocationApplicationAnalytic</returns> 
+        [HttpGet("GetApplicantLocationAll")]
+        public async Task<IActionResult> GetApplicantLocationAllAsync()
+        {
+            return Ok(await _mediator.Send(new GetApplicantLocationAllQuery()));
+        }
+        /// <summary>
+        /// Returns Races of applicants
+        /// </summary> 
+        /// 
+        /// <returns model="RaceApplicationAnalytic">RaceApplicationAnalytic</returns> 
+        [HttpGet("GetApplicantRaceAll")]
+        public async Task<IActionResult> GetApplicantRaceAllAsync()
+        {
+            return Ok(await _mediator.Send(new GetApplicantRaceAllQuery()));
+        }
+        /// <summary>
+        /// Returns The counts in each stage the applications are in
+        /// </summary> 
+        /// 
+        /// <returns model="PipelineApplicationAnalytic">PipelineApplicationAnalytic</returns> 
+        [HttpGet("GetApplicationPipeline")]
+        public async Task<IActionResult> GetApplicationPipelineAsync()
+        {
+            return Ok(await _mediator.Send(new GetApplicationPipelineQuery()));
+        }
+        /// <summary>
+        /// Returns  The appplicants per period
+        /// </summary> 
+        /// 
+        /// <returns model="CompletedApplicationAnalytic">CompletedApplicationAnalytic</returns> 
+        [HttpGet("GetApplicationsCompleted")]
+        public async Task<IActionResult> GetApplicationsCompletedQueryAsync()
+        {
+            return Ok(await _mediator.Send(new GetApplicationsCompletedQuery()));
         }
     }
 }
