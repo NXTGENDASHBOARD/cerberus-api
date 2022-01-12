@@ -10,7 +10,7 @@ using Cerberus.Dashboard.Domain.Models;
 
 namespace Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicationsCompleted
 {
-    public class GetApplicationsCompletedQueryHandler : IRequestHandler<GetApplicationsCompletedQuery, IEnumerable<Domain.Models.CompletedApplicationAnalytic>>
+    public class GetApplicationsCompletedQueryHandler : IRequestHandler<GetApplicationsCompletedQuery, IEnumerable<Domain.Models.AppGaugeGraphModel>>
     {
         private readonly IApplicationDbContext _context;
 
@@ -19,13 +19,38 @@ namespace Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.Ge
             _context = context;
         }
 
-        public async Task<IEnumerable<CompletedApplicationAnalytic>> Handle(GetApplicationsCompletedQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<AppGaugeGraphModel>> Handle(GetApplicationsCompletedQuery request, CancellationToken cancellationToken)
         {
             var completedApplicationList = await _context.CompletedApplicationAnalytic.ToListAsync();
+            List<AppGaugeGraphModel> model = new List<AppGaugeGraphModel>();
             if (completedApplicationList == null)
+            {
                 return null;
+            }
+            else
+            {
+                foreach (var compapp in completedApplicationList.OrderByDescending(g => g.DateRecord).Take(1))
+                {
+                    AppGaugeGraphModel app = new()
+                    {
+                        DateRecord = compapp.DateRecord,
+                      
+                        Sum = compapp.Sum
+                    };
+                    if (compapp.LastSum != 0)
+                    {
+                        app.Trend = Math.Round(Decimal.Divide(compapp.Sum, compapp.LastSum), 2) * 100;
+                    }
+                    else
+                    {
+                        app.Trend = 0;
+                    }
 
-            return completedApplicationList.AsReadOnly();
+                    model.Add(app);
+                }
+            }
+
+            return model;
         }
     }
 }
