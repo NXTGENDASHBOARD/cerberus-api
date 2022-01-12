@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicantGenderAll
 {
-    public class GetApplicantGenderAllQuery : IRequest<IEnumerable<Domain.Models.GenderApplicationAnalytic>>
+    public class GetApplicantGenderAllQuery : IRequest<IEnumerable<Domain.Models.GenderGraphModel>>
     {
         public bool isPaginated { get; set; }
         public int page { get; set; }
