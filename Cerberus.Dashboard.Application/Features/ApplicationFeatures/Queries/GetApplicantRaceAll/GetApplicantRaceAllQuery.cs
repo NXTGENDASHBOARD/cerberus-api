@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicantRaceAll
 {
-    public class GetApplicantRaceAllQuery : IRequest<IEnumerable<Domain.Models.RaceApplicationAnalytic>>
+    public class GetApplicantRaceAllQuery : IRequest<IEnumerable<Domain.Models.RaceGraphModel>>
     {
         public bool isPaginated { get; set; }
         public int page { get; set; }

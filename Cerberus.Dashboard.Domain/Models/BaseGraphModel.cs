@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Cerberus.Dashboard.Domain.Models
 {
-    public class GenderGraphModel : BaseGraphModel
+    public class BaseGraphModel
     {
-        public string Gender { get; set; }
-       
+        public int Sum { get; set; }
+        public DateTime DateRecord { get; set; }
+        public decimal Trend { get; set; }
     }
 }

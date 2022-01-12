@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cerberus.Dashboard.Domain.Models
 {
-    public class GenderGraphModel : BaseGraphModel
+    public class RaceGraphModel : BaseGraphModel
     {
-        public string Gender { get; set; }
-       
+        public string Race { get; set; }
+
     }
 }
