@@ -44,32 +44,19 @@ namespace Cerberus.Dashboard.Domain.Models
             Roles = new List<AccountRole>();
         }
     }
-
-
-    [Owned]
-    public class RefreshToken
-    {
-        [Key]
-        public int Id { get; set; }
-        public Account Account { get; set; }
-        public string Token { get; set; }
-
-        public DateTime Expires { get; set; }
-        public bool IsExpired => DateTime.UtcNow >= Expires;
-
-        public DateTime CreateDate { get; set; }
-        public string CreatedByIp { get; set; }
-
-        public DateTime? Revoked { get; set; }
-        public string RevokedByIp { get; set; }
-
-        public string ReplacedByToken { get; set; }
-        public bool IsActive => Revoked == null && !IsExpired;
-    }
+ 
     public enum RoleEnum
     {
         Admin = 1,
-        Staff = 2,
-        Student = 3
+        Dean = 2,
+        Lecturer = 3
+    }
+
+    public static class RoleConstants
+    {
+        public const string Admin = "Admin";
+        public const string Dean = "Dean";
+        public const string Lecturer = "Lecturer";
+        public const string FacultyOfficer = "Faculty Officer";
     }
 }

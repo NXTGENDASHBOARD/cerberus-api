@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cerberus.Dashboard.Domain.Models
 {
-    public class Role
+    public class Role : AuditEntity<int>
     {
         [MaxLength(256)]
         public string RoleName { get; set; }

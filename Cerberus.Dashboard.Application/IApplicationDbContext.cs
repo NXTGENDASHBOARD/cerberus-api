@@ -11,6 +11,11 @@ namespace Cerberus.Dashboard.Application
     public interface IApplicationDbContext
     {
         DbSet<Account> Accounts { get; set; }
+        DbSet<Role> Roles { get; set; }
+        DbSet<Permission> Permissions { get; set; }
+        DbSet<AccountRole> AccountRoles { get; set; }
+        DbSet<RolePermission> RolePermissions { get; set; }
+
         DbSet<Domain.Models.Application> Applications { get; set; }
         DbSet<Institution> Institutions { get; set; }
         public DbSet<Address> Addresss { get; set; }
