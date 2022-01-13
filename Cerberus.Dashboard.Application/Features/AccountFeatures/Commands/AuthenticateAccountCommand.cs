@@ -30,7 +30,8 @@ namespace Cerberus.Dashboard.Application.Features.AccountFeatures.Commands
 
         public async Task<int> Handle(AuthenticateAccountCommand command, CancellationToken cancellationToken)
         {
-            var account = await _context.Accounts.FirstOrDefaultAsync(x => x.Id == command.AccountId);
+            var account = await _context.Accounts
+                 .FirstOrDefaultAsync(x => x.Id == command.AccountId);
 
             if (account == null) throw new NotFoundException("Account does not exist");
 

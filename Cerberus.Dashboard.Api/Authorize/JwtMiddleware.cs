@@ -1,4 +1,5 @@
 ﻿using Cerberus.Dashboard.Application.Constants;
+using Cerberus.Dashboard.Application.Features.AccountFeatures.Queries;
 using Cerberus.Dashboard.Application.Services.Security;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -26,7 +27,7 @@ namespace Cerberus.Dashboard.Api.Authorize
             if (accountId != null)
             {
                 // attach account to context on successfully validation
-                //context.Items["User"] = await _mediator.Send(new GetAccountDetailsByIdQuery { AccountId = (int)accountId });
+                context.Items["User"] = await _mediator.Send(new GetAccountDetailsByIdQuery { AccountId = (int)accountId });
             }
             await _next(context);
         }

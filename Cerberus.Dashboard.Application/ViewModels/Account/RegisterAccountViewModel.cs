@@ -21,6 +21,8 @@ namespace Cerberus.Dashboard.Application.ViewModels.Account
         [MaxLength(15)]
         public string PhoneNumber { get; set; }
 
+        [Required]
+        public string StaffNumber { get; set; }
         public string Password { get; set; }
 
         public bool IsThirdParty { get; set; }
