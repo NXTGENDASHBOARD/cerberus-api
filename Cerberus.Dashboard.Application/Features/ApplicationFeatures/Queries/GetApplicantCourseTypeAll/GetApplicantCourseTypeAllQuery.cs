@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Cerberus.Dashboard.Application.Features.ApplicationFeatures.Queries.GetApplicantCourseTypeAll
 {
-    public class GetApplicantCourseTypeAllQuery : IRequest<IEnumerable<Domain.Models.CourseTypeApplicationAnalytic>>
+    public class GetApplicantCourseTypeAllQuery : IRequest<IEnumerable<Domain.Models.CourseTypeGraphModel>>
     {
         public bool isPaginated { get; set; }
         public int page { get; set; }
