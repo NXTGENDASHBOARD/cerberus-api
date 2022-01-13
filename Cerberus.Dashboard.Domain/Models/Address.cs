@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cerberus.Dashboard.Domain.Models
 {
-    public  class Address : Entity
+    public  class Address : AuditEntity<int>
     {
         
         public string PhysicalAddressLine1 { get; set; }

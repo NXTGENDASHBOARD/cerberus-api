@@ -1,4 +1,5 @@
 ﻿using Cerberus.Dashboard.Application;
+using Cerberus.Dashboard.Application.Extensions;
 using Cerberus.Dashboard.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,6 +16,10 @@ namespace Cerberus.Dashboard.Persistence.Context
         : base(options)
         { }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
+        public DbSet<AccountRole> AccountRoles { get; set; }
+        public DbSet<RolePermission> RolePermissions { get; set; }
         public DbSet<Domain.Models.Application> Applications { get; set; }
         public DbSet<Institution> Institutions { get; set; }
 
@@ -36,6 +41,10 @@ namespace Cerberus.Dashboard.Persistence.Context
         public DbSet<LocationApplicationAnalytic> LocationApplicationAnalytic { get; set; }
 
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Seed();
+        }
 
 
         public async Task<int> SaveChangesAsync() { return await base.SaveChangesAsync(); }

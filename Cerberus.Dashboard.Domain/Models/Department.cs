@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cerberus.Dashboard.Domain.Models
 {
-    public class Department : Entity
+    public class Department : AuditEntity<int>
     {
         [ForeignKey("School")]
         public int SchoolId { get; set; }

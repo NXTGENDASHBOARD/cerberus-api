@@ -1,4 +1,5 @@
 ﻿using Cerberus.Dashboard.Api.IoC;
+using Cerberus.Dashboard.Application.Constants;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,8 +24,9 @@ namespace Cerberus.Dashboard.Api
             ContainerSetup.Setup(services, Configuration);
 
             // configure strongly typed settings object
-            //services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
-            //ContainerSetup.Setup(services, Configuration);
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.Configure<EmailConfiguration>(Configuration.GetSection("EmailConfiguration"));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ITS 5.0 Student Selection API", Version = "v1" });
