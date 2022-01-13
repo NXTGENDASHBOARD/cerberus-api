@@ -45,15 +45,19 @@ namespace Cerberus.Dashboard.Application.Services.Security
             }
         }
 
-        public bool IsAdministrator
-        {
-            get { return Account.Role == Domain.Models.Role.Admin; }
-        }
+        public bool IsAdministrator => throw new NotImplementedException();
 
-        public bool IsStaff
-        {
-            get { return Account.Role == Domain.Models.Role.Staff; }
-        }
+        public bool IsStaff => throw new NotImplementedException();
+
+        //public bool IsAdministrator
+        //{
+        //    get { return Account.Role == Domain.Models.RoleEnum.Admin; }
+        //}
+
+        //public bool IsStaff
+        //{
+        //    get { return Account.Role == Domain.Models.RoleEnum.Staff; }
+        //}
 
     }
 }

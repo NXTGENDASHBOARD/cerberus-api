@@ -8,35 +8,40 @@ using System.Threading.Tasks;
 
 namespace Cerberus.Dashboard.Domain.Models
 {
-    public class Account : Entity
+    public class Account : AuditEntity<int>
     {
 
         // Properties
-        [Required]
         public string StaffNumber { get; set; }
 
-        public string FullName { get; set; }
+        [MaxLength(50)]
+        public string FirstName { get; set; }
 
+        [MaxLength(50)]
+        public string Surname { get; set; }
+
+        [MaxLength(100)]
         public string Email { get; set; }
 
-        public Role Role { get; set; }
+        [MaxLength(15)]
+        public string PhoneNumber { get; set; }
 
-        // Security
         public string PasswordHash { get; set; }
-        public string VerificationToken { get; set; }
-        public DateTime? Verified { get; set; }
-        public bool IsVerified => Verified.HasValue || PasswordReset.HasValue;
+
+        public bool IsThirdParty { get; set; }
+
+        public string ThirdPartyProvider { get; set; }
         public string Token { get; set; }
-        public DateTime? ResetTokenExpires { get; set; }
-        public DateTime? PasswordReset { get; set; }
-        
-        public List<RefreshToken> RefreshTokens { get; set; }
-        public int RegistrationTypeId { get; set; }
+        public bool IsVerified { get; set; }
+        public string OTPVerification { get; set; }
 
+        public DateTime? OTPTokenExpires { get; set; }
 
-        public bool OwnsToken(string token)
+        public virtual List<AccountRole> Roles { get; set; }
+
+        public Account()
         {
-            return this.RefreshTokens?.Find(x => x.Token == token) != null;
+            Roles = new List<AccountRole>();
         }
     }
 
@@ -61,7 +66,7 @@ namespace Cerberus.Dashboard.Domain.Models
         public string ReplacedByToken { get; set; }
         public bool IsActive => Revoked == null && !IsExpired;
     }
-    public enum Role
+    public enum RoleEnum
     {
         Admin = 1,
         Staff = 2,

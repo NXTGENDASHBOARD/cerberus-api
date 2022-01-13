@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cerberus.Dashboard.Domain.Models
 {
-    public class Application : Entity
+    public class Application : AuditEntity<int>
     {
         public string Firstname { get; set; }
         public string Lastname { get; set; }
