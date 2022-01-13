@@ -1,4 +1,5 @@
-﻿using Cerberus.Dashboard.Application.ViewModels.Account;
+﻿using Cerberus.Dashboard.Application.Features.AccountFeatures.Commands;
+using Cerberus.Dashboard.Application.ViewModels.Account;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,60 +50,60 @@ namespace Cerberus.Dashboard.Application.Extensions.Account
 
         #region Entity Extensions
 
-        //public static Domain.Models.Account ToEntityCommand(this RegisterAccountCommand model)
-        //{
-        //    return new Domain.Models.Account
-        //    {
-        //        FirstName = model.FirstName,
-        //        Surname = model.Surname,
-        //        Email = model.Email,
-        //        PhoneNumber = model.PhoneNumber,
-        //        CreatedDate = model.CreatedDate,
-        //        CreateUserId = model.CreateUserId,
-        //        IsThirdParty = model.IsThirdParty,
-        //        ModifyDate = model.ModifyDate,
-        //        ModifyUserId = model.ModifyUserId,
-        //        ThirdPartyProvider = model.ThirdPartyProvider,
-        //        PasswordHash = model.PasswordHash,
-        //        IsVerified = model.IsVerified,
-        //        OTPVerification = model.OTPVerification,
-        //        IsActive = model.IsActive,
-        //        StatusId = model.StatusId,
-        //    };
-        //}
+        public static Domain.Models.Account ToEntityCommand(this RegisterAccountCommand model)
+        {
+            return new Domain.Models.Account
+            {
+                FirstName = model.FirstName,
+                Surname = model.Surname,
+                Email = model.Email,
+                PhoneNumber = model.PhoneNumber,
+                CreatedDate = model.CreatedDate,
+                CreateUserId = model.CreateUserId,
+                IsThirdParty = model.IsThirdParty,
+                ModifyDate = model.ModifyDate,
+                ModifyUserId = model.ModifyUserId,
+                ThirdPartyProvider = model.ThirdPartyProvider,
+                PasswordHash = model.PasswordHash,
+                IsVerified = model.IsVerified,
+                OTPVerification = model.OTPVerification,
+                IsActive = model.IsActive,
+                StatusId = model.StatusId,
+            };
+        }
 
         #endregion
 
         #region Command Extensions
-        //public static RegisterAccountCommand ToCommandViewModel(this RegisterAccountViewModel model)
-        //{
-        //    return new RegisterAccountCommand
-        //    {
-        //        FirstName = model.FirstName,
-        //        Surname = model.Surname,
-        //        PhoneNumber = model.PhoneNumber,
-        //        Email = model.Email,
-        //        Password = model.Password,
-        //        RoleName = model.RoleType,
-        //        CreatedDate = DateTime.UtcNow.ToLocalTime(),
-        //        CreateUserId = model.CreateUserId,
-        //        ModifyDate = DateTime.UtcNow.ToLocalTime(),
-        //        ModifyUserId = model.ModifyUserId,
-        //        IsThirdParty = model.IsThirdParty,
-        //        ThirdPartyProvider = model.ThirdPartyProvider,
-        //        IsActive = model.IsActive,
-        //        StatusId = model.StatusId,
-        //    };
-        //}
+        public static RegisterAccountCommand ToCommandViewModel(this RegisterAccountViewModel model)
+        {
+            return new RegisterAccountCommand
+            {
+                FirstName = model.FirstName,
+                Surname = model.Surname,
+                PhoneNumber = model.PhoneNumber,
+                Email = model.Email,
+                Password = model.Password,
+                RoleName = model.RoleType,
+                CreatedDate = DateTime.UtcNow.ToLocalTime(),
+                CreateUserId = model.CreateUserId,
+                ModifyDate = DateTime.UtcNow.ToLocalTime(),
+                ModifyUserId = model.ModifyUserId,
+                IsThirdParty = model.IsThirdParty,
+                ThirdPartyProvider = model.ThirdPartyProvider,
+                IsActive = model.IsActive,
+                StatusId = model.StatusId,
+            };
+        }
 
-        //public static LoginAccountCommand ToCommandViewModel(this LoginAccountViewModel model)
-        //{
-        //    return new LoginAccountCommand
-        //    {
-        //        Email = model.Email,
-        //        Password = model?.Password
-        //    };
-        //}
+        public static LoginAccountCommand ToCommandViewModel(this LoginAccountViewModel model)
+        {
+            return new LoginAccountCommand
+            {
+                StaffNumber = model.StaffNumber,
+                Pin = model?.Pin
+            };
+        }
         #endregion
 
         #region Query Extensions 

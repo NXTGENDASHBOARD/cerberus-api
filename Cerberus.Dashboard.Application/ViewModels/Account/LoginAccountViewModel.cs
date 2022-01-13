@@ -10,8 +10,8 @@ namespace Cerberus.Dashboard.Application.ViewModels.Account
     public class LoginAccountViewModel
     {
         [Required]
-        public string Email { get; set; }
+        public string StaffNumber { get; set; }
         [Required]
-        public string Password { get; set; }
+        public string Pin { get; set; }
     }
 }
