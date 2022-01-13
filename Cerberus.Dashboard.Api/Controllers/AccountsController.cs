@@ -34,7 +34,7 @@ namespace Cerberus.Dashboard.Api.Controllers
                 Pin = model.Pin
             });
             if(accountId == default) return BadRequest(ModelState);
-            var account = await _mediator.Send(new GetAccountByIdQuery { AccountId = accountId });
+            var account = await _mediator.Send(new GetAccountByIdQuery { Id = accountId });
 
             return Ok(account);
         }

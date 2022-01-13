@@ -1,4 +1,5 @@
-﻿using Cerberus.Dashboard.Application.Services.ITS;
+﻿using Cerberus.Dashboard.Application.Services.Email;
+using Cerberus.Dashboard.Application.Services.ITS;
 using Cerberus.Dashboard.Application.Services.Security;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -16,8 +17,9 @@ namespace Cerberus.Dashboard.Application
     {
         public static void AddApplication(this IServiceCollection services)
         {
-            services.AddServices();
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddServices();
+
         }
 
         public static void AddServices(this IServiceCollection services)
@@ -28,6 +30,7 @@ namespace Cerberus.Dashboard.Application
             services.AddScoped<ISecurityContext, SecurityContext>();
             services.AddScoped<IITS_InstitutionService, ITS_InstitutionService>();
             services.AddScoped<IITS_SecurityService, ITS_SecurityService>();
+            services.AddScoped<IEmailService, EmailService>();
         }
     }
 }
