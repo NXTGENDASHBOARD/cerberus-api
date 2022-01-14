@@ -5,6 +5,7 @@ using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Command.Update
 using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Queries.GetAllInstitutions;
 using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Queries.GetAllInstitutionsFromITS;
 using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Queries.GetInstitutionById;
+using Cerberus.Dashboard.Application.Features.InstitutionFeatures.Queries.GetFacultiesByInstitutionId;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -101,6 +102,12 @@ namespace Cerberus.Dashboard.Api.Controllers
 
             return Ok(await _mediator.Send(command));
         }
- 
+
+        [HttpGet("getFacultyByInstitutionId/{id}")]
+        public async Task<IActionResult> GetFacultyByInstitutionIdAsync(int id)
+        {
+            return Ok(await _mediator.Send(new GetFacultiesByInstitutionIdQuery { Id = id } ));
+        }
+
     }
 }
