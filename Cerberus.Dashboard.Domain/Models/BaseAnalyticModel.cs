@@ -11,6 +11,9 @@ namespace Cerberus.Dashboard.Domain.Models
     {
         [Key]
         public int Id { get; set; }
+        public int InstituteId { get; set; }
+        public int FacultyId { get; set; }
+        public int DepartmentId { get; set; }
         public int Sum { get; set; }
 
         public DateTime DateRecord { get; set; }
