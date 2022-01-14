@@ -35,6 +35,7 @@ namespace Cerberus.Dashboard.Application.Extensions.Account
             return new AccountDetailsResponseViewModel
             {
                 Id = model.Id,
+                StaffNumber = model.StaffNumber,
                 FirstName = model.FirstName,
                 Surname = model.Surname,
                 Email = model.Email,
@@ -54,6 +55,7 @@ namespace Cerberus.Dashboard.Application.Extensions.Account
         {
             return new Domain.Models.Account
             {
+                StaffNumber = model.StaffNumber,
                 FirstName = model.FirstName,
                 Surname = model.Surname,
                 Email = model.Email,
@@ -79,6 +81,7 @@ namespace Cerberus.Dashboard.Application.Extensions.Account
         {
             return new RegisterAccountCommand
             {
+                StaffNumber = model.StaffNumber,
                 FirstName = model.FirstName,
                 Surname = model.Surname,
                 PhoneNumber = model.PhoneNumber,

@@ -24,8 +24,8 @@ namespace Cerberus.Dashboard.Application.Features.AccountFeatures.Queries.Verify
         {
 
             var account = await _context.Accounts.FirstOrDefaultAsync(a => a.StaffNumber == query.StaffNumber);
-            if (account == null || !account.IsVerified)
-                throw new Exception("Account must be verified");
+            if (account == null) throw new Exception("Invalid user account");
+            if (!account.IsVerified) throw new Exception("Account must be verified");
             if (!_encryptionService.IsValidPassword(query.Pin.ToString(), account.PasswordHash))
                 throw new Exception("Email or password is invalid");
 

@@ -1,4 +1,6 @@
-﻿using Cerberus.Dashboard.Domain.Models;
+﻿using Cerberus.Dashboard.Application.ViewModels.Account;
+using Cerberus.Dashboard.Domain.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
@@ -22,24 +24,24 @@ namespace Cerberus.Dashboard.Api.Authorize
             if (allowAnonymous)
                 return;
 
-            //var account = (AccountDetailsResponseViewModel)context.HttpContext.Items["User"];
+            var account = (AccountDetailsResponseViewModel)context.HttpContext.Items["User"];
 
-            //if (account == null)
-            //{
-            //    context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
-            //    return;
-            //}
+            if (account == null)
+            {
+                context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
+                return;
+            }
 
-            //var hasRole = account.Roles.Any(x => _roles
-            //    .Contains((RoleEnum)Enum
-            //    .Parse(typeof(RoleEnum),
-            //    x.RoleName)));
+            var hasRole = account.Roles.Any(x => _roles
+                .Contains((RoleEnum)Enum
+                .Parse(typeof(RoleEnum),
+                x.RoleName)));
 
 
-            //if (account == null || (_roles.Any() && !hasRole))
-            //{
-            //    context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
-            //}
+            if (account == null || (_roles.Any() && !hasRole))
+            {
+                context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
+            }
         }
     }
 }
